@@ -6,4 +6,5 @@ sudo apt-get -y --force-yes install mysql-server-5.6 nodejs-legacy git npm
 sudo npm install -g bower
 sudo npm install -g nodemon
 sudo npm install -g grunt
-sudo npm install -g slack-cli
+cd /home/ubuntu/
+git clone https://github.com/sun-teng/protractor-LT.git
