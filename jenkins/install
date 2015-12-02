@@ -1,10 +1,21 @@
-mkdir remoteAdmin
+echo "\[\e[0;32m\]Creating folder...\[\e[m\]\c"
+mkdir -p remoteAdmin
 cd remoteAdmin
+echo "\[\e[0;32m\]Done!\[\e[m\]"
+
+echo "\[\e[0;32m\]Installing jenkins... \[\e[m\]\c"
 wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
-sudo apt-get update
-sudo apt-get install -y git git-extras openjdk-7-jdk openjdk-7-jre jenkins
-wget -N http://localhost:8080/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin ghprb
-java -jar jenkins-cli.jar -s http://localhost:8080/ safe-restart 
+sudo apt-get update 1>/dev/null
+sudo apt-get install -y git git-extras openjdk-7-jdk openjdk-7-jre jenkins 1>/dev/null
+echo "\[\e[0;32m\]Done!\[\e[m\]"
 
+echo "\[\e[0;32m\]Waiting 10s for jenkins to start... \[\e[m\]\c"
+sleep 10
+echo "\[\e[0;32m\]Done!\[\e[m\]"
+
+echo "\[\e[0;32m\]Installing jenkins plugins... \[\e[m\]\c"
+wget -N http://localhost:8080/jnlpJars/jenkins-cli.jar 1>/dev/null
+java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin ghprb 1>/dev/null
+java -jar jenkins-cli.jar -s http://localhost:8080/ safe-restart  1>/dev/null
+echo "\[\e[0;32m\]Done!\[\e[m\]"
