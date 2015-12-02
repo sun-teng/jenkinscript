@@ -2,7 +2,8 @@ sudo apt-get update
 # Install MySQL Server in a Non-Interactive mode. Default root password will be "root"
 echo "mysql-server-5.6 mysql-server/root_password password root" | sudo debconf-set-selections
 echo "mysql-server-5.6 mysql-server/root_password_again password root" | sudo debconf-set-selections
-sudo apt-get -y --force-yes install mysql-server-5.6 nodejs-legacy git npm
+sudo apt-get -y --force-yes install mysql-server-5.6 nodejs-legacy git npm mail
 sudo npm install -g bower
 sudo npm install -g nodemon
 sudo npm install -g grunt
+sudo npm install -g slack-cli
