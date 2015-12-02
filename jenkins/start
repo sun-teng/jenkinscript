@@ -1,1 +1,1 @@
-sudo start-stop-daemon --start --quiet --background --chuid jenkins --exec /usr/bin/java -- -jar /usr/share/jenkins/jenkins.war
+sudo service jenkins start
