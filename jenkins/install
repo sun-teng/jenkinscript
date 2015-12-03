@@ -1,6 +1,7 @@
 echo -e "\e[32mCreating folder...\e[0m\c";
-mkdir -p remoteAdmin;
-cd remoteAdmin;
+mkdir -p tmp;
+cd tmp;
+chmod 400 .;
 echo -e  "\e[32mDone!\e[0m";
 
 echo -e  "\e[32mInstalling jenkins... \e[0m\c";
