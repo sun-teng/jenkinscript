@@ -1,0 +1,12 @@
+echo -e "\e[32mSetting sudo rights and removing password prompt for jenkins:\e[0m";
+JENKINS_PERMISSION="jenkins ALL=(ALL)NOPASSWD: ALL";
+SUDOERS_PATH=/etc/sudoers;
+if ! sudo grep -Fxq "$JENKINS_PERMISSION" $SUDOERS_PATH;
+then
+	echo "$JENKINS_PERMISSION" | sudo tee -a $SUDOERS_PATH;
+else
+	echo "Permission already granted";
+fi
+echo -e  "\e[32mDone!\e[0m";
+
+echo -e "\e[31mFYI please place the .pem file in /home/ubuntu/.ssh to enable ssh\e[0m";

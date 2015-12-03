@@ -20,5 +20,15 @@ java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin ghprb 1>/dev/
 java -jar jenkins-cli.jar -s http://localhost:8080/ safe-restart  1>/dev/null;
 echo -e  "\e[32mDone!\e[0m";
 
-echo -e "\e[31mFYI please place the .pem file in /var/lib/jenkins/.ssh to enable ssh\e[0m";
+echo -e "\e[32mSetting sudo rights and removing password prompt for jenkins:\e[0m";
+JENKINS_PERMISSION="jenkins ALL=(ALL)NOPASSWD: ALL";
+SUDOERS_PATH=/etc/sudoers;
+if ! sudo grep -Fxq "$JENKINS_PERMISSION" $SUDOERS_PATH;
+then
+	echo "$JENKINS_PERMISSION" | sudo tee -a $SUDOERS_PATH;
+else
+	echo "Permission already granted";
+fi
+echo -e  "\e[32mDone!\e[0m";
 
+echo -e "\e[31mFYI please place the .pem file in /home/ubuntu/.ssh to enable ssh\e[0m";
