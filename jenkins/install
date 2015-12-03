@@ -7,7 +7,7 @@ echo -e  "\e[32mInstalling jenkins... \e[0m\c";
 wget --quiet -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add - 1>/dev/null;
 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list' 1>/dev/null;
 sudo apt-get update 1>/dev/null;
-sudo apt-get install -y git git-extras openjdk-7-jdk openjdk-7-jre jenkins 1>/dev/null;
+sudo apt-get install -y git git-extras openjdk-7-jdk openjdk-7-jre jenkins openssh-client 1>/dev/null;
 echo -e  "\e[32mDone!\e[0m";
 
 echo -e  "\e[32mWaiting 30s for jenkins to start... \e[0m\c";
