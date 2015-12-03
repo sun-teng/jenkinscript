@@ -19,3 +19,6 @@ wget --quiet -N http://localhost:8080/jnlpJars/jenkins-cli.jar 1>/dev/null;
 java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin ghprb 1>/dev/null;
 java -jar jenkins-cli.jar -s http://localhost:8080/ safe-restart  1>/dev/null;
 echo -e  "\e[32mDone!\e[0m";
+
+echo -e "\e[31mFYI please place the .pem file in /var/lib/jenkins/.ssh to enable ssh\e[0m";
+

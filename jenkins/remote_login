@@ -2,6 +2,6 @@ echo remote build test
 curl --data "Build started from Slackbot" 'https://learntogether.slack.com/services/hooks/slackbot?token=f9BnSFksHu8vyseqWsMpMaVF&channel=%23jenkins'
 #ssh -o StrictHostKeyChecking=no -l ubuntu ec2-52-35-37-185.us-west-2.compute.amazonaws.com
 
-ssh -i /home/ubuntu/jenkinscript/secret/JenkinsLT.pem -oStrictHostKeyChecking=no  ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/startB
+ssh -o StrictHostKeyChecking=no -i /var/lib/jenkins/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/startB
 curl --data "Build ended from Slackbot" 'https://learntogether.slack.com/services/hooks/slackbot?token=f9BnSFksHu8vyseqWsMpMaVF&channel=%23jenkins'
 
