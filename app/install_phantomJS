@@ -2,15 +2,17 @@ sudo apt-get update
 sudo apt-get install build-essential chrpath libssl-dev libxft-dev -y --force-yes
 sudo apt-get install libfreetype6 libfreetype6-dev -y --force-yes
 sudo apt-get install libfontconfig1 libfontconfig1-dev -y --force-yes
-if [! -z ${PHANTOM_JS+x} ]; 
+if [ ! -d /usr/local/share/phantomjs* ]
 then
+	echo "PhantomJS 1.9.8 not found, setting PhantomJS system variable"
 	cd ~
 	export PHANTOM_JS="phantomjs-1.9.8-linux-x86_64"
-	if[! -d $PHANTOM_JS ];
-	then
-		wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
-		sudo tar xvjf $PHANTOM_JS.tar.bz2
-		sudo mv $PHANTOM_JS /usr/local/share
-		sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
-	fi
+	wget --quiet https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
+	sudo tar xvjf $PHANTOM_JS.tar.bz2
+	rm $PHANTOM_JS.tar.bz2
+	sudo mv $PHANTOM_JS /usr/local/share
+	sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+	echo "PhantomJS Installed"
+else
+	echo "PhantomJS detected"
 fi
