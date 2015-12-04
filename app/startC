@@ -1,0 +1,7 @@
+cd ~
+rm -rf learntogther
+git clone git@github.com:sun-teng/learntogether.git --branch unitTest --single-branch learntogther
+make install
+karma start
+~/learntogether
+
