@@ -1,7 +1,7 @@
 cd ~
 sudo kill -15 $(pgrep node)
 sudo rm -rf learntogether
-git clone $1 --branch master --single-branch learntogether
+git clone git@github.com:$1.git --branch master --single-branch learntogether
 #git clone git@github.com:sun-teng/learntogether.git --branch unitTest --single-branch learntogether
 cd ~/learntogether
 sudo make install
