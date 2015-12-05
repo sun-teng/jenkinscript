@@ -3,7 +3,7 @@ curl --data "Build started from Slackbot" 'https://learntogether.slack.com/servi
 #ssh -o StrictHostKeyChecking=no -l ubuntu ec2-52-35-37-185.us-west-2.compute.amazonaws.com
 
 #sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/startB
-sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/startB "git@github.com:$(curl $ghprbPullLink | jq \".head.repo.full_name\" |sed 's/\"//g').git"
+sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/install_start_LT "git@github.com:$(curl $ghprbPullLink | jq \".head.repo.full_name\" |sed 's/\"//g').git"
 
 curl --data "Build ended from Slackbot" 'https://learntogether.slack.com/services/hooks/slackbot?token=f9BnSFksHu8vyseqWsMpMaVF&channel=%23jenkins'
 
