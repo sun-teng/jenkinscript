@@ -3,7 +3,8 @@ curl --data "Build started from Slackbot" 'https://learntogether.slack.com/servi
 #ssh -o StrictHostKeyChecking=no -l ubuntu ec2-52-35-37-185.us-west-2.compute.amazonaws.com
 
 #sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/startB
-sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/install_start_LT "git@github.com:$(curl $ghprbPullLink | jq \".head.repo.full_name\" |sed 's/\"//g').git"
+#git@github.com:$(curl "$(echo "$ghprbPullLink" | sed "s/git/api\.git/g" | sed "s/pull/pulls/g" | sed "s/\.com\//\.com\/repos\//")" | jq ".head.repo.full_name" |sed "s/\"//g").g
+sudo ssh -o StrictHostKeyChecking=no -i /home/ubuntu/.ssh/JenkinsLT.pem ubuntu@ec2-52-35-37-185.us-west-2.compute.amazonaws.com "bash -s" < /home/ubuntu/jenkinscript/app/install_start_LT "$(curl "$(echo "$ghprbPullLink" | sed "s/git/api\.git/g" | sed "s/pull/pulls/g" | sed "s/\.com\//\.com\/repos\//")" | jq ".head.repo.full_name" |sed "s/\"//g")"
 
 curl --data "Build ended from Slackbot" 'https://learntogether.slack.com/services/hooks/slackbot?token=f9BnSFksHu8vyseqWsMpMaVF&channel=%23jenkins'
 
